@@ -1,0 +1,286 @@
+@prefix : <http://example.org/ovn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://www.schema.org/> .
+@base <http://example.org/ovn> .
+
+<http://example.org/ovn> rdf:type owl:Ontology .
+
+#################################################################
+#  This is a modification of 
+#
+#
+#
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://example.org/ovn#hasRelated
+
+:hasRelated rdf:type owl:ObjectProperty ;
+            
+            rdfs:domain :Agent ;
+            
+            rdfs:range :Relationship .
+
+
+
+###  http://example.org/ovn#hasRelationship
+
+:hasRelationship rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:comment "The relationship the agent has or is with other agents" ;
+                 
+                 rdfs:domain :Agent ;
+                 
+                 rdfs:range :Relationship .
+
+
+
+###  http://example.org/ovn#isRelated
+
+:isRelated rdf:type owl:ObjectProperty ;
+           
+           rdfs:range :Agent ;
+           
+           rdfs:domain :Relationship .
+
+
+
+###  http://example.org/ovn#relationshipStatus
+
+:relationshipStatus rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:comment "The status of the relationship" ;
+                    
+                    rdfs:domain :Relationship ;
+                    
+                    rdfs:range :RelationshipStatusType .
+
+
+
+###  http://example.org/ovn#relationshipType
+
+:relationshipType rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:comment "The type of agent relationship" ;
+                  
+                  rdfs:domain :Relationship ;
+                  
+                  rdfs:range :RelationshipType .
+
+
+
+###  http://example.org/ovn#relationshipTypeName
+
+:relationshipTypeName rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:comment "The name of the type of agent relationship" ;
+                      
+                      rdfs:domain :RelationshipType ;
+                      
+                      rdfs:range :RelationshipTypeName .
+
+
+
+###  http://example.org/ovn#symmetrichasRelationship
+
+:symmetrichasRelationship rdf:type owl:ObjectProperty ;
+                          
+                          rdfs:comment "The symmetric relationship that corresponds to this relationship." ;
+                          
+                          rdfs:domain :Agent ;
+                          
+                          rdfs:range :Relationship .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://example.org/ovn#description
+
+:description rdf:type owl:DatatypeProperty ;
+             
+             rdfs:comment "description of schemame Thing" ;
+             
+             rdfs:range xsd:string ;
+             
+             rdfs:domain owl:Thing .
+
+
+
+###  http://example.org/ovn#label
+
+:label rdf:type owl:DatatypeProperty ;
+       
+       rdfs:comment "A label of the type of agent relationship" ;
+       
+       rdfs:domain :RelationshipType ;
+       
+       rdfs:range xsd:string .
+
+
+
+###  http://example.org/ovn#name
+
+:agentName rdf:type owl:DatatypeProperty ;
+      
+      rdfs:comment "name of schemame Thing" ;
+      
+      rdfs:range xsd:string ;
+      
+      rdfs:domain :Agent .
+
+
+
+###  http://example.org/ovn#pluralLabel
+
+:pluralLabel rdf:type owl:DatatypeProperty ;
+             
+             rdfs:comment "A plural label of the type of agent relationship" ;
+             
+             rdfs:domain :RelationshipType ;
+             
+             rdfs:range xsd:string .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://example.org/ovn#Agent
+
+:Agent rdf:type owl:Class ;
+       
+       owl:equivalentClass foaf:Agent ;
+       
+       rdfs:comment "An Agent" .
+
+
+
+###  http://example.org/ovn#Relationship
+
+:Relationship rdf:type owl:Class ;
+              
+              owl:equivalentClass org:Membership ;
+              
+              rdfs:comment "A relationship between multiple agents" .
+
+
+
+###  http://example.org/ovn#RelationshipStatusType
+
+:RelationshipStatusType rdf:type owl:Class ;
+                        
+                        rdfs:comment "The status of the relationship" .
+
+
+
+###  http://example.org/ovn#RelationshipType
+
+:RelationshipType rdf:type owl:Class ;
+                  
+                  rdfs:comment "A type of relationship between multiple agents" .
+
+
+
+###  http://example.org/ovn#RelationshipTypeName
+
+:RelationshipTypeName rdf:type owl:Class ;
+                      
+                      rdfs:comment "The name of the type of agent relationship" .
+
+
+
+###  http://example.org/ovn#active
+
+:active rdf:type owl:Class ;
+        
+        rdfs:subClassOf :RelationshipStatusType .
+
+
+
+###  http://example.org/ovn#child
+
+:child rdf:type owl:Class ;
+       
+       rdfs:subClassOf :RelationshipTypeName .
+
+
+
+###  http://example.org/ovn#customer
+
+:customer rdf:type owl:Class ;
+          
+          rdfs:subClassOf :RelationshipTypeName .
+
+
+
+###  http://example.org/ovn#inactive
+
+:inactive rdf:type owl:Class ;
+          
+          rdfs:subClassOf :RelationshipStatusType .
+
+
+
+###  http://example.org/ovn#member
+
+:member rdf:type owl:Class ;
+        
+        rdfs:subClassOf :RelationshipTypeName .
+
+
+
+###  http://example.org/ovn#potential
+
+:potential rdf:type owl:Class ;
+           
+           rdfs:subClassOf :RelationshipStatusType .
+
+
+
+###  http://example.org/ovn#supplier
+
+:supplier rdf:type owl:Class ;
+          
+          rdfs:subClassOf :RelationshipTypeName .
+
+
+
+###  http://www.w3.org/ns/org#Membership
+
+org:Membership rdf:type owl:Class .
+
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+
+foaf:Agent rdf:type owl:Class .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+
