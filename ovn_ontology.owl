@@ -22,7 +22,8 @@
 
 ###  http://example.org/ovn#affectsEvent
 
-:affectsEvent rdf:type owl:ObjectProperty ;
+:affectsEvent rdf:type owl:AsymmetricProperty ,
+                       owl:ObjectProperty ;
               
               rdfs:domain :Duality ;
               
@@ -44,7 +45,9 @@
 
 ###  http://example.org/ovn#exchangeType
 
-:exchangeType rdf:type owl:ObjectProperty ;
+:exchangeType rdf:type owl:AsymmetricProperty ,
+                       owl:FunctionalProperty ,
+                       owl:ObjectProperty ;
               
               rdfs:domain :Exchange ;
               
@@ -66,7 +69,8 @@
 
 ###  http://example.org/ovn#hasDuality
 
-:hasDuality rdf:type owl:ObjectProperty ;
+:hasDuality rdf:type owl:ObjectProperty ,
+                     owl:SymmetricProperty ;
             
             rdfs:range :Duality ;
             
@@ -74,19 +78,11 @@
 
 
 
-###  http://example.org/ovn#hasKind
-
-:hasKind rdf:type owl:ObjectProperty ;
-         
-         rdfs:range :Kind ;
-         
-         rdfs:domain :Unit .
-
-
-
 ###  http://example.org/ovn#hasQuantity
 
-:hasQuantity rdf:type owl:ObjectProperty ;
+:hasQuantity rdf:type owl:AsymmetricProperty ,
+                      owl:FunctionalProperty ,
+                      owl:ObjectProperty ;
              
              rdfs:range :Quantity ;
              
@@ -100,13 +96,17 @@
             
             rdfs:domain :Agent ;
             
-            rdfs:range :Relationship .
+            rdfs:range :Relationship ;
+            
+            owl:inverseOf :isRelated .
 
 
 
 ###  http://example.org/ovn#hasRelationship
 
-:hasRelationship rdf:type owl:ObjectProperty ;
+:hasRelationship rdf:type owl:FunctionalProperty ,
+                          owl:ObjectProperty ,
+                          owl:SymmetricProperty ;
                  
                  rdfs:comment "The relationship the agent has or is with other agents" ;
                  
@@ -118,7 +118,9 @@
 
 ###  http://example.org/ovn#hasRole
 
-:hasRole rdf:type owl:ObjectProperty ;
+:hasRole rdf:type owl:AsymmetricProperty ,
+                  owl:FunctionalProperty ,
+                  owl:ObjectProperty ;
          
          rdfs:comment "The predicate linking an Agent to a Role." ;
          
@@ -130,23 +132,15 @@
 
 ###  http://example.org/ovn#hasStock_Flow
 
-:hasStock_Flow rdf:type owl:ObjectProperty ;
+:hasStock_Flow rdf:type owl:AsymmetricProperty ,
+                        owl:FunctionalProperty ,
+                        owl:ObjectProperty ;
                
                rdfs:comment "Link between the class Event and the Class describing stock flows" ;
                
                rdfs:domain :Event ;
                
                rdfs:range :Stock_Flow .
-
-
-
-###  http://example.org/ovn#hasUnit
-
-:hasUnit rdf:type owl:ObjectProperty ;
-         
-         rdfs:domain :Quantity ;
-         
-         rdfs:range :Unit .
 
 
 
@@ -162,7 +156,8 @@
 
 ###  http://example.org/ovn#kindGeneralization
 
-:kindGeneralization rdf:type owl:ObjectProperty ;
+:kindGeneralization rdf:type owl:AsymmetricProperty ,
+                             owl:ObjectProperty ;
                     
                     rdfs:comment "The kind that this is generalized from." ;
                     
@@ -174,7 +169,8 @@
 
 ###  http://example.org/ovn#linkage
 
-:linkage rdf:type owl:ObjectProperty ;
+:linkage rdf:type owl:ObjectProperty ,
+                  owl:SymmetricProperty ;
          
          rdfs:domain :Resource ;
          
@@ -184,7 +180,8 @@
 
 ###  http://example.org/ovn#location
 
-:location rdf:type owl:ObjectProperty ;
+:location rdf:type owl:FunctionalProperty ,
+                   owl:ObjectProperty ;
           
           rdfs:comment "The locations the Agent is based near." ;
           
@@ -200,9 +197,11 @@
           
           rdfs:comment "The groups the person is a member of." ;
           
-          rdfs:range :Agent ;
+          rdfs:domain :Agent ;
           
-          rdfs:domain :Group .
+          rdfs:range :Group ;
+          
+          owl:inverseOf :groupMember .
 
 
 
@@ -214,13 +213,16 @@
               
               rdfs:domain :Role ;
               
-              rdfs:range :Role .
+              rdfs:range :Role ;
+              
+              owl:inverseOf :broaderRole .
 
 
 
 ###  http://example.org/ovn#participation
 
-:participation rdf:type owl:ObjectProperty ;
+:participation rdf:type owl:AsymmetricProperty ,
+                        owl:ObjectProperty ;
                
                rdfs:domain :Agent ;
                
@@ -230,7 +232,9 @@
 
 ###  http://example.org/ovn#processType
 
-:processType rdf:type owl:ObjectProperty ;
+:processType rdf:type owl:AsymmetricProperty ,
+                      owl:FunctionalProperty ,
+                      owl:ObjectProperty ;
              
              rdfs:domain :Process ;
              
@@ -240,7 +244,9 @@
 
 ###  http://example.org/ovn#quantityUnit
 
-:quantityUnit rdf:type owl:ObjectProperty ;
+:quantityUnit rdf:type owl:AsymmetricProperty ,
+                       owl:FunctionalProperty ,
+                       owl:ObjectProperty ;
               
               rdfs:comment "The unit of the quantity." ;
               
@@ -252,7 +258,8 @@
 
 ###  http://example.org/ovn#relatedRole
 
-:relatedRole rdf:type owl:ObjectProperty ;
+:relatedRole rdf:type owl:ObjectProperty ,
+                      owl:SymmetricProperty ;
              
              rdfs:comment "Roles that are related to this role." ;
              
@@ -276,7 +283,8 @@
 
 ###  http://example.org/ovn#relationshipType
 
-:relationshipType rdf:type owl:ObjectProperty ;
+:relationshipType rdf:type owl:FunctionalProperty ,
+                           owl:ObjectProperty ;
                   
                   rdfs:comment "The type of agent relationship" ;
                   
@@ -288,7 +296,8 @@
 
 ###  http://example.org/ovn#relationshipTypeName
 
-:relationshipTypeName rdf:type owl:ObjectProperty ;
+:relationshipTypeName rdf:type owl:FunctionalProperty ,
+                               owl:ObjectProperty ;
                       
                       rdfs:comment "The name of the type of agent relationship" ;
                       
@@ -300,7 +309,9 @@
 
 ###  http://example.org/ovn#resourceType
 
-:resourceType rdf:type owl:ObjectProperty ;
+:resourceType rdf:type owl:AsymmetricProperty ,
+                       owl:FunctionalProperty ,
+                       owl:ObjectProperty ;
               
               rdfs:domain :Resource ;
               
@@ -310,7 +321,8 @@
 
 ###  http://example.org/ovn#roleContext
 
-:roleContext rdf:type owl:ObjectProperty ;
+:roleContext rdf:type owl:AsymmetricProperty ,
+                      owl:ObjectProperty ;
              
              rdfs:comment "The group the agent has a role in." ;
              
@@ -322,7 +334,9 @@
 
 ###  http://example.org/ovn#symmetrichasRelationship
 
-:symmetrichasRelationship rdf:type owl:ObjectProperty ;
+:symmetrichasRelationship rdf:type owl:FunctionalProperty ,
+                                   owl:ObjectProperty ,
+                                   owl:SymmetricProperty ;
                           
                           rdfs:comment "The symmetric relationship that corresponds to this relationship." ;
                           
@@ -334,8 +348,9 @@
 
 ###  http://example.org/ovn#unitKind
 
-:unitKind rdf:type owl:ObjectProperty ,
-                   owl:SymmetricProperty ;
+:unitKind rdf:type owl:AsymmetricProperty ,
+                   owl:FunctionalProperty ,
+                   owl:ObjectProperty ;
           
           rdfs:comment "The kind of the unit." ;
           
@@ -347,7 +362,9 @@
 
 ###  http://example.org/ovn#yeildsResource
 
-:yeildsResource rdf:type owl:ObjectProperty ;
+:yeildsResource rdf:type owl:AsymmetricProperty ,
+                         owl:FunctionalProperty ,
+                         owl:ObjectProperty ;
                 
                 rdfs:range :Resource ;
                 
