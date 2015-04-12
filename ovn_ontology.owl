@@ -271,7 +271,9 @@
 
 ###  http://example.org/ovn#relationshipStatus
 
-:relationshipStatus rdf:type owl:ObjectProperty ;
+:relationshipStatus rdf:type owl:AsymmetricProperty ,
+                             owl:FunctionalProperty ,
+                             owl:ObjectProperty ;
                     
                     rdfs:comment "The status of the relationship" ;
                     
