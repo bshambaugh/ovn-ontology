@@ -1,0 +1,1031 @@
+@prefix : <http://example.org/ovn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://www.schema.org/> .
+@prefix geo_wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@base <http://example.org/ovn> .
+
+<http://example.org/ovn> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://example.org/ovn#affectsEvent
+
+:affectsEvent rdf:type owl:ObjectProperty ;
+              
+              rdfs:domain :Duality ;
+              
+              rdfs:range :Event .
+
+
+
+###  http://example.org/ovn#broaderRole
+
+:broaderRole rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "Roles that are broader than this role." ;
+             
+             rdfs:range :Role ;
+             
+             rdfs:domain :Role .
+
+
+
+###  http://example.org/ovn#exchangeType
+
+:exchangeType rdf:type owl:ObjectProperty ;
+              
+              rdfs:domain :Exchange ;
+              
+              rdfs:range :ExchangeType .
+
+
+
+###  http://example.org/ovn#groupMember
+
+:groupMember rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "The members of the group." ;
+             
+             rdfs:range :Agent ;
+             
+             rdfs:domain :Group .
+
+
+
+###  http://example.org/ovn#hasDuality
+
+:hasDuality rdf:type owl:ObjectProperty ;
+            
+            rdfs:range :Duality ;
+            
+            rdfs:domain :Event .
+
+
+
+###  http://example.org/ovn#hasKind
+
+:hasKind rdf:type owl:ObjectProperty ;
+         
+         rdfs:range :Kind ;
+         
+         rdfs:domain :Unit .
+
+
+
+###  http://example.org/ovn#hasQuantity
+
+:hasQuantity rdf:type owl:ObjectProperty ;
+             
+             rdfs:range :Quantity ;
+             
+             rdfs:domain :Stock_Flow .
+
+
+
+###  http://example.org/ovn#hasRelated
+
+:hasRelated rdf:type owl:ObjectProperty ;
+            
+            rdfs:domain :Agent ;
+            
+            rdfs:range :Relationship .
+
+
+
+###  http://example.org/ovn#hasRelationship
+
+:hasRelationship rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:comment "The relationship the agent has or is with other agents" ;
+                 
+                 rdfs:domain :Agent ;
+                 
+                 rdfs:range :Relationship .
+
+
+
+###  http://example.org/ovn#hasRole
+
+:hasRole rdf:type owl:ObjectProperty ;
+         
+         rdfs:comment "The predicate linking an Agent to a Role." ;
+         
+         rdfs:domain :Agent ;
+         
+         rdfs:range :Role .
+
+
+
+###  http://example.org/ovn#hasStock_Flow
+
+:hasStock_Flow rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment "Link between the class Event and the Class describing stock flows" ;
+               
+               rdfs:domain :Event ;
+               
+               rdfs:range :Stock_Flow .
+
+
+
+###  http://example.org/ovn#hasUnit
+
+:hasUnit rdf:type owl:ObjectProperty ;
+         
+         rdfs:domain :Quantity ;
+         
+         rdfs:range :Unit .
+
+
+
+###  http://example.org/ovn#isRelated
+
+:isRelated rdf:type owl:ObjectProperty ;
+           
+           rdfs:range :Agent ;
+           
+           rdfs:domain :Relationship .
+
+
+
+###  http://example.org/ovn#kindGeneralization
+
+:kindGeneralization rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:comment "The kind that this is generalized from." ;
+                    
+                    rdfs:domain :Kind ;
+                    
+                    rdfs:range :Kind .
+
+
+
+###  http://example.org/ovn#linkage
+
+:linkage rdf:type owl:ObjectProperty ;
+         
+         rdfs:domain :Resource ;
+         
+         rdfs:range :Resource .
+
+
+
+###  http://example.org/ovn#location
+
+:location rdf:type owl:ObjectProperty ;
+          
+          rdfs:comment "The locations the Agent is based near." ;
+          
+          rdfs:domain :Agent ;
+          
+          rdfs:range :Location .
+
+
+
+###  http://example.org/ovn#memberOf
+
+:memberOf rdf:type owl:ObjectProperty ;
+          
+          rdfs:comment "The groups the person is a member of." ;
+          
+          rdfs:range :Agent ;
+          
+          rdfs:domain :Group .
+
+
+
+###  http://example.org/ovn#narrowerRole
+
+:narrowerRole rdf:type owl:ObjectProperty ;
+              
+              rdfs:comment "Roles that are narrower than this role." ;
+              
+              rdfs:domain :Role ;
+              
+              rdfs:range :Role .
+
+
+
+###  http://example.org/ovn#participation
+
+:participation rdf:type owl:ObjectProperty ;
+               
+               rdfs:domain :Agent ;
+               
+               rdfs:range :Event .
+
+
+
+###  http://example.org/ovn#processType
+
+:processType rdf:type owl:ObjectProperty ;
+             
+             rdfs:domain :Process ;
+             
+             rdfs:range :ProcessType .
+
+
+
+###  http://example.org/ovn#quantityUnit
+
+:quantityUnit rdf:type owl:ObjectProperty ;
+              
+              rdfs:comment "The unit of the quantity." ;
+              
+              rdfs:domain :Quantity ;
+              
+              rdfs:range :Unit .
+
+
+
+###  http://example.org/ovn#relatedRole
+
+:relatedRole rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "Roles that are related to this role." ;
+             
+             rdfs:domain :Role ;
+             
+             rdfs:range :Role .
+
+
+
+###  http://example.org/ovn#relationshipStatus
+
+:relationshipStatus rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:comment "The status of the relationship" ;
+                    
+                    rdfs:domain :Relationship ;
+                    
+                    rdfs:range :RelationshipStatusType .
+
+
+
+###  http://example.org/ovn#relationshipType
+
+:relationshipType rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:comment "The type of agent relationship" ;
+                  
+                  rdfs:domain :Relationship ;
+                  
+                  rdfs:range :RelationshipType .
+
+
+
+###  http://example.org/ovn#relationshipTypeName
+
+:relationshipTypeName rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:comment "The name of the type of agent relationship" ;
+                      
+                      rdfs:domain :RelationshipType ;
+                      
+                      rdfs:range :RelationshipTypeName .
+
+
+
+###  http://example.org/ovn#resourceType
+
+:resourceType rdf:type owl:ObjectProperty ;
+              
+              rdfs:domain :Resource ;
+              
+              rdfs:range :ResourceType .
+
+
+
+###  http://example.org/ovn#roleContext
+
+:roleContext rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "The group the agent has a role in." ;
+             
+             rdfs:range :Group ;
+             
+             rdfs:domain :Role .
+
+
+
+###  http://example.org/ovn#symmetrichasRelationship
+
+:symmetrichasRelationship rdf:type owl:ObjectProperty ;
+                          
+                          rdfs:comment "The symmetric relationship that corresponds to this relationship." ;
+                          
+                          rdfs:domain :Agent ;
+                          
+                          rdfs:range :Relationship .
+
+
+
+###  http://example.org/ovn#unitKind
+
+:unitKind rdf:type owl:ObjectProperty ,
+                   owl:SymmetricProperty ;
+          
+          rdfs:comment "The kind of the unit." ;
+          
+          rdfs:range :Kind ;
+          
+          rdfs:domain :Unit .
+
+
+
+###  http://example.org/ovn#yeildsResource
+
+:yeildsResource rdf:type owl:ObjectProperty ;
+                
+                rdfs:range :Resource ;
+                
+                rdfs:domain :Stock_Flow .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://example.org/ovn#agentName
+
+:agentName rdf:type owl:DatatypeProperty ;
+           
+           rdfs:comment "name of Agent" ;
+           
+           rdfs:domain :Agent ;
+           
+           rdfs:range xsd:string .
+
+
+
+###  http://example.org/ovn#description
+
+:description rdf:type owl:DatatypeProperty ;
+             
+             rdfs:comment "description of schema Thing" ;
+             
+             rdfs:range xsd:string ;
+             
+             rdfs:domain owl:Thing .
+
+
+
+###  http://example.org/ovn#groupName
+
+:groupName rdf:type owl:DatatypeProperty ;
+           
+           rdfs:comment "The primary name of the group." ;
+           
+           rdfs:domain :Group ;
+           
+           rdfs:range xsd:string .
+
+
+
+###  http://example.org/ovn#handle
+
+:handle rdf:type owl:DatatypeProperty ;
+        
+        rdfs:comment "The person's online alias." ;
+        
+        rdfs:domain :Person ;
+        
+        rdfs:range xsd:string .
+
+
+
+###  http://example.org/ovn#image
+
+:image rdf:type owl:DatatypeProperty ;
+       
+       rdfs:comment "An avatar of the person" ;
+       
+       rdfs:domain :Person ;
+       
+       rdfs:range xsd:string .
+
+
+
+###  http://example.org/ovn#kindAbbreviation
+
+:kindAbbreviation rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:comment "An abbreviation of the kind." ;
+                  
+                  rdfs:domain :Kind ;
+                  
+                  rdfs:range xsd:string .
+
+
+
+###  http://example.org/ovn#kindDescription
+
+:kindDescription rdf:type owl:DatatypeProperty ;
+                 
+                 rdfs:comment "A description of the kind." ;
+                 
+                 rdfs:domain :Kind ;
+                 
+                 rdfs:range xsd:string .
+
+
+
+###  http://example.org/ovn#kindSymbol
+
+:kindSymbol rdf:type owl:DatatypeProperty ;
+            
+            rdfs:comment "A symbol of the kind." ;
+            
+            rdfs:domain :Kind ;
+            
+            rdfs:range xsd:string .
+
+
+
+###  http://example.org/ovn#label
+
+:label rdf:type owl:DatatypeProperty ;
+       
+       rdfs:comment "A label of the type of agent relationship" ;
+       
+       rdfs:domain :RelationshipType ;
+       
+       rdfs:range xsd:string .
+
+
+
+###  http://example.org/ovn#pluralLabel
+
+:pluralLabel rdf:type owl:DatatypeProperty ;
+             
+             rdfs:comment "A plural label of the type of agent relationship" ;
+             
+             rdfs:domain :RelationshipType ;
+             
+             rdfs:range xsd:string .
+
+
+
+###  http://example.org/ovn#quantityAbbreviation
+
+:quantityAbbreviation rdf:type owl:DatatypeProperty ;
+                      
+                      rdfs:comment "An abbreviation of the quantity." ;
+                      
+                      rdfs:domain :Quantity ;
+                      
+                      rdfs:range xsd:string .
+
+
+
+###  http://example.org/ovn#quantityDescription
+
+:quantityDescription rdf:type owl:DatatypeProperty ;
+                     
+                     rdfs:comment "A description of the quantity." ;
+                     
+                     rdfs:domain :Quantity ;
+                     
+                     rdfs:range xsd:string .
+
+
+
+###  http://example.org/ovn#quantityRelativeStandardUncertainty
+
+:quantityRelativeStandardUncertainty rdf:type owl:DatatypeProperty ;
+                                     
+                                     rdfs:comment "The relative standard uncertainty of the value." ;
+                                     
+                                     rdfs:domain :Quantity ;
+                                     
+                                     rdfs:range xsd:float .
+
+
+
+###  http://example.org/ovn#quantityStandardUncertainty
+
+:quantityStandardUncertainty rdf:type owl:DatatypeProperty ;
+                             
+                             rdfs:comment "The standard uncertainty of the value." ;
+                             
+                             rdfs:domain :Quantity ;
+                             
+                             rdfs:range xsd:float .
+
+
+
+###  http://example.org/ovn#quantitySymbol
+
+:quantitySymbol rdf:type owl:DatatypeProperty ;
+                
+                rdfs:comment "A symbol of the quantity." ;
+                
+                rdfs:domain :Quantity ;
+                
+                rdfs:range xsd:string .
+
+
+
+###  http://example.org/ovn#quantityValue
+
+:quantityValue rdf:type owl:DatatypeProperty ;
+               
+               rdfs:comment "The magnitude of the quantity." ;
+               
+               rdfs:domain :Quantity ;
+               
+               rdfs:range xsd:float .
+
+
+
+###  http://example.org/ovn#unitAbbreviation
+
+:unitAbbreviation rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:comment "An abbreviation of the unit." ;
+                  
+                  rdfs:domain :Unit ;
+                  
+                  rdfs:range xsd:string .
+
+
+
+###  http://example.org/ovn#unitConversionMultiplier
+
+:unitConversionMultiplier rdf:type owl:DatatypeProperty ;
+                          
+                          rdfs:comment "A multiplier for this unit in relation to the given kind." ;
+                          
+                          rdfs:domain :Unit ;
+                          
+                          rdfs:range xsd:float .
+
+
+
+###  http://example.org/ovn#unitConversionOffset
+
+:unitConversionOffset rdf:type owl:DatatypeProperty ;
+                      
+                      rdfs:comment "An offset for this unit in relation to the given kind." ;
+                      
+                      rdfs:domain :Unit ;
+                      
+                      rdfs:range xsd:float .
+
+
+
+###  http://example.org/ovn#unitDescription
+
+:unitDescription rdf:type owl:DatatypeProperty ;
+                 
+                 rdfs:comment "A description of the unit." ;
+                 
+                 rdfs:domain :Unit ;
+                 
+                 rdfs:range xsd:string .
+
+
+
+###  http://example.org/ovn#unitSymbol
+
+:unitSymbol rdf:type owl:DatatypeProperty ;
+            
+            rdfs:comment "An abbreviation of the unit." ;
+            
+            rdfs:domain :Unit ;
+            
+            rdfs:range xsd:string .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://example.org/ovn#Agent
+
+:Agent rdf:type owl:Class ;
+       
+       owl:equivalentClass foaf:Agent ;
+       
+       rdfs:comment "An Agent" .
+
+
+
+###  http://example.org/ovn#Commitment
+
+:Commitment rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Event .
+
+
+
+###  http://example.org/ovn#Consumption
+
+:Consumption rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Outflow .
+
+
+
+###  http://example.org/ovn#Duality
+
+:Duality rdf:type owl:Class .
+
+
+
+###  http://example.org/ovn#Event
+
+:Event rdf:type owl:Class .
+
+
+
+###  http://example.org/ovn#Exchange
+
+:Exchange rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Duality .
+
+
+
+###  http://example.org/ovn#ExchangeType
+
+:ExchangeType rdf:type owl:Class .
+
+
+
+###  http://example.org/ovn#Give
+
+:Give rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Outflow .
+
+
+
+###  http://example.org/ovn#Group
+
+:Group rdf:type owl:Class ;
+       
+       rdfs:subClassOf :InsideAgent ,
+                       :OutsideAgent .
+
+
+
+###  http://example.org/ovn#Inflow
+
+:Inflow rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Stock_Flow .
+
+
+
+###  http://example.org/ovn#InputEvent
+
+:InputEvent rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Event .
+
+
+
+###  http://example.org/ovn#InputPlan
+
+:InputPlan rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Plan .
+
+
+
+###  http://example.org/ovn#InputType
+
+:InputType rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Resource .
+
+
+
+###  http://example.org/ovn#InsideAgent
+
+:InsideAgent rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Agent .
+
+
+
+###  http://example.org/ovn#Kind
+
+:Kind rdf:type owl:Class ;
+      
+      rdfs:comment "A kind is any observable property that can be measured and quantified numerically." .
+
+
+
+###  http://example.org/ovn#Location
+
+:Location rdf:type owl:Class ;
+          
+          owl:equivalentClass schema:Place ,
+                              geo_wgs84:SpatialThing ;
+          
+          rdfs:comment "Physical Location of a Person." .
+
+
+
+###  http://example.org/ovn#Outflow
+
+:Outflow rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Stock_Flow .
+
+
+
+###  http://example.org/ovn#OutputEvent
+
+:OutputEvent rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Event .
+
+
+
+###  http://example.org/ovn#OutputPlan
+
+:OutputPlan rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Plan .
+
+
+
+###  http://example.org/ovn#OutputType
+
+:OutputType rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Resource .
+
+
+
+###  http://example.org/ovn#OutsideAgent
+
+:OutsideAgent rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Agent .
+
+
+
+###  http://example.org/ovn#Person
+
+:Person rdf:type owl:Class ;
+        
+        rdfs:subClassOf :InsideAgent ,
+                        :OutsideAgent .
+
+
+
+###  http://example.org/ovn#Plan
+
+:Plan rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Resource .
+
+
+
+###  http://example.org/ovn#Process
+
+:Process rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Duality .
+
+
+
+###  http://example.org/ovn#ProcessType
+
+:ProcessType rdf:type owl:Class .
+
+
+
+###  http://example.org/ovn#Production
+
+:Production rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Inflow .
+
+
+
+###  http://example.org/ovn#Quantity
+
+:Quantity rdf:type owl:Class ;
+          
+          rdfs:comment "A  quantity expresses magnitude and kind and is given by the product of a numerical value n and a unit of measure U." .
+
+
+
+###  http://example.org/ovn#Relationship
+
+:Relationship rdf:type owl:Class ;
+              
+              owl:equivalentClass org:Membership ;
+              
+              rdfs:comment "A relationship between multiple agents" .
+
+
+
+###  http://example.org/ovn#RelationshipStatusType
+
+:RelationshipStatusType rdf:type owl:Class ;
+                        
+                        rdfs:comment "The status of the relationship" .
+
+
+
+###  http://example.org/ovn#RelationshipType
+
+:RelationshipType rdf:type owl:Class ;
+                  
+                  rdfs:comment "A type of relationship between multiple agents" .
+
+
+
+###  http://example.org/ovn#RelationshipTypeName
+
+:RelationshipTypeName rdf:type owl:Class ;
+                      
+                      rdfs:comment "The name of the type of agent relationship" .
+
+
+
+###  http://example.org/ovn#Resource
+
+:Resource rdf:type owl:Class .
+
+
+
+###  http://example.org/ovn#ResourceType
+
+:ResourceType rdf:type owl:Class .
+
+
+
+###  http://example.org/ovn#Role
+
+:Role rdf:type owl:Class .
+
+
+
+###  http://example.org/ovn#Stock_Flow
+
+:Stock_Flow rdf:type owl:Class .
+
+
+
+###  http://example.org/ovn#Take
+
+:Take rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Inflow .
+
+
+
+###  http://example.org/ovn#Unit
+
+:Unit rdf:type owl:Class ;
+      
+      rdfs:comment "A unit is a particular entity of a given kind that has been chosen as a scale for measuring other quantities of the same kind." .
+
+
+
+###  http://example.org/ovn#Use
+
+:Use rdf:type owl:Class ;
+     
+     rdfs:subClassOf :Outflow .
+
+
+
+###  http://example.org/ovn#active
+
+:active rdf:type owl:Class ;
+        
+        rdfs:subClassOf :RelationshipStatusType .
+
+
+
+###  http://example.org/ovn#assignment
+
+:assignment rdf:type owl:Class ;
+            
+            rdfs:subClassOf :RelationshipTypeName .
+
+
+
+###  http://example.org/ovn#child
+
+:child rdf:type owl:Class ;
+       
+       rdfs:subClassOf :RelationshipTypeName .
+
+
+
+###  http://example.org/ovn#cooperation
+
+:cooperation rdf:type owl:Class ;
+             
+             rdfs:subClassOf :RelationshipTypeName .
+
+
+
+###  http://example.org/ovn#customer
+
+:customer rdf:type owl:Class ;
+          
+          rdfs:subClassOf :RelationshipTypeName .
+
+
+
+###  http://example.org/ovn#inactive
+
+:inactive rdf:type owl:Class ;
+          
+          rdfs:subClassOf :RelationshipStatusType .
+
+
+
+###  http://example.org/ovn#member
+
+:member rdf:type owl:Class ;
+        
+        rdfs:subClassOf :RelationshipTypeName .
+
+
+
+###  http://example.org/ovn#potential
+
+:potential rdf:type owl:Class ;
+           
+           rdfs:subClassOf :RelationshipStatusType .
+
+
+
+###  http://example.org/ovn#responsibility
+
+:responsibility rdf:type owl:Class ;
+                
+                rdfs:subClassOf :RelationshipTypeName .
+
+
+
+###  http://example.org/ovn#supplier
+
+:supplier rdf:type owl:Class ;
+          
+          rdfs:subClassOf :RelationshipTypeName .
+
+
+
+###  http://www.schema.org/Place
+
+schema:Place rdf:type owl:Class .
+
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing
+
+geo_wgs84:SpatialThing rdf:type owl:Class .
+
+
+
+###  http://www.w3.org/ns/org#Membership
+
+org:Membership rdf:type owl:Class .
+
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+
+foaf:Agent rdf:type owl:Class .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+
