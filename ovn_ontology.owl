@@ -43,6 +43,18 @@
 
 
 
+###  http://example.org/ovn#eventType
+
+:eventType rdf:type owl:AsymmetricProperty ,
+                    owl:FunctionalProperty ,
+                    owl:ObjectProperty ;
+           
+           rdfs:domain :Event ;
+           
+           rdfs:range :EventType .
+
+
+
 ###  http://example.org/ovn#exchangeType
 
 :exchangeType rdf:type owl:AsymmetricProperty ,
@@ -187,7 +199,9 @@
           
           rdfs:domain :Agent ;
           
-          rdfs:range :Location .
+          rdfs:range :Location ;
+          
+          rdfs:domain :Resource .
 
 
 
@@ -682,6 +696,12 @@
 
 
 
+###  http://example.org/ovn#EventType
+
+:EventType rdf:type owl:Class .
+
+
+
 ###  http://example.org/ovn#Exchange
 
 :Exchange rdf:type owl:Class ;
@@ -823,9 +843,7 @@
 
 ###  http://example.org/ovn#Plan
 
-:Plan rdf:type owl:Class ;
-      
-      rdfs:subClassOf :Resource .
+:Plan rdf:type owl:Class .
 
 
 
